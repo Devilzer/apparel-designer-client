@@ -1,8 +1,7 @@
 function App() {
 
   return (
-    <div>
-      <h1 className="head-text">React</h1>
+    <div className="app">
     </div>
   )
 }
