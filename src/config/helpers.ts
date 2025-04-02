@@ -1,5 +1,13 @@
-export const downloadCanvasToImage = () => {
+/**
+ * Downloads the current canvas content as an image file.
+ */
+export const downloadCanvasToImage = (): void => {
   const canvas = document.querySelector("canvas");
+  if(!canvas){
+    console.error("Canvas not found");
+    return;
+  }
+
   const dataURL = canvas.toDataURL();
   const link = document.createElement("a");
 
@@ -10,14 +18,24 @@ export const downloadCanvasToImage = () => {
   document.body.removeChild(link);
 };
 
-export const reader = (file) =>
-  new Promise((resolve, reject) => {
+/**
+ * Reads a file and returns its data as a base64 string.
+ * @param {File} file - The file to be read.
+ * @returns {Promise<string | ArrayBuffer | null>} A promise that resolves with the file's data.
+ */
+export const reader = (file:File): Promise<string | ArrayBuffer |null> =>
+  new Promise((resolve) => {
     const fileReader = new FileReader();
     fileReader.onload = () => resolve(fileReader.result);
     fileReader.readAsDataURL(file);
   });
 
-export const getContrastingColor = (color) => {
+/**
+ * Determines the contrasting color (black or white) for a given hex color.
+ * @param {string} color - The hex color code (e.g., "#FFFFFF").
+ * @returns {string} The contrasting color ("black" or "white").
+ */
+export const getContrastingColor = (color:String):String => {
   // Remove the '#' character if it exists
   const hex = color.replace("#", "");
 
