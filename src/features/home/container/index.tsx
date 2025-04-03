@@ -1,6 +1,8 @@
 import {motion, AnimatePresence} from 'framer-motion';
 import {useSnapshot} from 'valtio'
 
+import {CustomButtom} from '../../../commonComponents'
+
 import state from '../../../store'
 
 import {headContentAnimation, headContainerAnimation, headTextAnimation, slideAnimation} from '../../../config/motion.ts'
@@ -18,7 +20,7 @@ const Home = () => {
           <motion.div className='home-content' {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className='head-text'>
-                Let's <br className='x1:block hidden'/> Do It.
+                Let's <br className='x1:block hidden'/>Do It.
               </h1>
             </motion.div>
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
@@ -27,6 +29,12 @@ const Home = () => {
                 and define your own style.
               </p>
 
+              <CustomButtom
+              type='filled'
+              title="Customize It"
+              handleClick= {()=> state.home =false}
+              coustomStyles='w-fit px-4 py-2.5 font-bold text-sm'
+              />
               
             </motion.div>
 
