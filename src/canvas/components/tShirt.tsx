@@ -6,22 +6,29 @@ import {Decal, useGLTF, useTexture} from '@react-three/drei'
 import state from '../../store'
 const Tshirt = () => {
   const snap = useSnapshot(state);
-  const {nodes, materials} = useGLTF('/shirt_baked.glb')
-  console.log("nodes",nodes,"materials",materials)
+  const {nodes, materials} = useGLTF('/tShirt.glb')
 
   const logoTexture = useTexture(snap.logoDecal)
   const fullTexture = useTexture(snap.fullDecal)
 
   return (
     <group>
-      {/* <mesh
-      castShadow
-      material={}
-      geometry={}
-      material-roughness={1}
-      dispose={null}>
-
-      </mesh> */}
+      {Object.keys(nodes).map((key) => {
+        const node = nodes[key];
+        if (node.isMesh) {
+          return (
+            <mesh
+              key={key}
+              geometry={node.geometry}
+              material={materials[node.material.name]}
+              material-roughness={0.5}
+              dispose={null}
+            >
+            </mesh>
+          );
+        }
+        return null;
+      })}
     </group>
   )
 }
