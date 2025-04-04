@@ -1,4 +1,4 @@
-import Canvas from './canvas/index'
+import Canvas from './canvas/container/index'
 import Customizer from './features/customizer/container'
 import Home from './features/home/container'
 
