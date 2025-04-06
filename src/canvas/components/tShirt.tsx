@@ -30,7 +30,6 @@ const Tshirt = () => {
             >
               {snap.isFullTexture && (
                 <Decal
-                debug
                 position={[0,1.25,0]}
                 rotation={[0,0,0]}
                 scale={1}
@@ -40,7 +39,6 @@ const Tshirt = () => {
 
               {snap.isLogoTexture && (
                 <Decal
-                debug
                 position={[0,1.35,0.075]}
                 rotation={[0,0,0]}
                 scale={0.25}
