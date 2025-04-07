@@ -12,10 +12,17 @@ const Tshirt = () => {
 
   const logoTexture = useTexture(snap.logoDecal)
   const fullTexture = useTexture(snap.fullDecal)
-  console.log('FULL',fullTexture)
+  
+  useFrame((state, delta) => {
+    easing.dampC(materials.Body_FRONT_2664.color,snap.color,0.25,delta)
+    easing.dampC(materials.Sleeves_FRONT_2669.color,snap.color,0.25,delta)
+  })
+
+  const stateString = JSON.stringify(snap);
 
   return (
-    <group>
+    <group
+    key={stateString}>
        {Object.keys(nodes).map((key) => {
         const node = nodes[key];
         if (node.isMesh) {
@@ -43,6 +50,7 @@ const Tshirt = () => {
                 rotation={[0,0,0]}
                 scale={0.25}
                 map={logoTexture}  
+                depthTest={false}
                 />
               )}
             </mesh>

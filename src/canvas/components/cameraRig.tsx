@@ -1,11 +1,15 @@
-import { useRef } from 'react';
-import {useFrame} from '@react-three/fiber';
+import { ReactNode, useRef } from 'react';
+import {ThreeElement, useFrame} from '@react-three/fiber';
 import {easing} from 'maath';
 import {useSnapshot} from 'valtio';
 
 import state from '../../store';
 
-const CameraRig = ({children}) => {
+interface CameraRigProps {
+  children: ReactNode;
+}
+
+const CameraRig = ({children}:CameraRigProps) => {
   const group = useRef();
   const snap = useSnapshot(state);
 
