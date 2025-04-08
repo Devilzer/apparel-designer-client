@@ -24,7 +24,7 @@ const Home = () => {
               </h3>
             </motion.div>
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
-              <p className='max-w-md font-normal text-gray-600 text-base'>
+              <p className='max-w-sm font-normal text-gray-600 text-base'>
                 Create your unique apparel with out 3D customization tool. <strong>Unleash your creativity! </strong> 
                 and define your own style.
               </p>
