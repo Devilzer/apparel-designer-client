@@ -34,6 +34,8 @@ const Tshirt = () => {
               material-roughness={0.5}
               material-transparent={false}
               dispose={null}
+              castShadow
+              receiveShadow
             >
               {snap.isFullTexture && (
                 <Decal
