@@ -2,14 +2,14 @@ import { useSnapshot } from 'valtio'
 
 import state from '../store/index'
 
-interface CustomButtomProps {
+interface CustomButtonProps {
     type:'filled' | 'outline';
     title:string;
     handleClick: () => void;
     coustomStyles?: string;
 }
 
-const customButtom : React.FC<CustomButtomProps> = (
+const customButton : React.FC<CustomButtonProps> = (
     {
     type,
     title,
@@ -41,4 +41,4 @@ const customButtom : React.FC<CustomButtomProps> = (
   )
 }
 
-export default customButtom
+export default customButton

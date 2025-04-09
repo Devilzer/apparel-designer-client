@@ -12,7 +12,7 @@ const CanvasModel = () => {
     camera={
       {
         position:[0,0,0],
-        fov:50
+        fov:35
       }
     }
     gl={{preserveDrawingBuffer:true}}

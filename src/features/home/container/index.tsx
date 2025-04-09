@@ -1,7 +1,7 @@
 import {motion, AnimatePresence} from 'framer-motion';
 import {useSnapshot} from 'valtio'
 
-import {CustomButtom} from '../../../commonComponents'
+import {CustomButton} from '../../../commonComponents'
 
 import state from '../../../store'
 
@@ -29,7 +29,7 @@ const Home = () => {
                 and define your own style.
               </p>
 
-              <CustomButtom
+              <CustomButton
               type='filled'
               title="Customize It"
               handleClick= {()=> state.home =false}

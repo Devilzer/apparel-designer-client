@@ -1,10 +1,9 @@
 import { useRef } from 'react';
-import {useFrame} from '@react-three/fiber';
 import {AccumulativeShadows, RandomizedLight} from '@react-three/drei';
-
 
 const BackDrop = () => {
   const shadows = useRef();
+
   return (
   <AccumulativeShadows
     ref={shadows}
@@ -14,7 +13,9 @@ const BackDrop = () => {
     scale={10}
     rotation={[Math.PI / 2, 0, 0]}
     position={[0, 0, -0.14]}
-    color="#ffffff"
+    color='#ffffff'
+    colorBlend={1}
+    opacity={0.8}
 >
   <RandomizedLight
     castShadow 
