@@ -5,8 +5,8 @@ const state = proxy({
     color: '#EFBD48',
     isLogoTexture: true,
     isFullTexture: false,
-    logoDecal: './dog.png',
-    fullDecal: './cat.png',
+    logoDecal: './cat.png',
+    fullDecal: './nightSky.webp',
     // for the canvas
     activeEditorTab: 'shapes',
     // for the customizer

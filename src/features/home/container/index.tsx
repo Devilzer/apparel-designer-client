@@ -15,23 +15,22 @@ const Home = () => {
       {snap.home && (
         <motion.section className='home' {...slideAnimation('left')}>
           <motion.header {...slideAnimation('down')}>
-            <img src='./cat.png' alt='Cat' className='w-8 h-8 object-contain'/>
+            <img src='./logo.png' alt='Logo' className='w-8 h-8 object-contain'/>
           </motion.header>
           <motion.div className='home-content' {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h3 className='head-text'>
-                Let's <br className='x1:block hidden'/>Do It.
+              Style, <br/>your way.
               </h3>
             </motion.div>
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
               <p className='max-w-sm font-normal text-gray-600 text-base'>
-                Create your unique apparel with out 3D customization tool. <strong>Unleash your creativity! </strong> 
-                and define your own style.
+              Design your own apparel with our 3D customization tool. Unleash your creativity and express your unique style.
               </p>
 
               <CustomButton
               type='filled'
-              title="Customize It"
+              title="Customize now"
               handleClick= {()=> state.home =false}
               coustomStyles='w-fit px-4 py-2.5 font-bold text-sm'
               />

@@ -14,6 +14,7 @@ const tab : React.FC<TabProps> = ({
   isFilterTab,
   isActiveTab
 }) => {
+  console.log('tab',isActiveTab,"tab.name",tab.name);
   const snap = useSnapshot(state);
 
   const activeStyles = isFilterTab && isActiveTab 

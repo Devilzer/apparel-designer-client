@@ -24,10 +24,9 @@ const Customizer = () => {
   const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState('');
-  console.log(activeEditorTab)
   const [activeFilterTab, setActiveFilterTab] = useState({
-    logo:true,
-    full: false,
+    logoShirt:true,
+    fullShirt: false,
   });
 
   const handleDecals = (type, result) => {
@@ -38,6 +37,30 @@ const Customizer = () => {
     if(!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab)
     }
+  }
+
+  const handleActiveFilterTab = (tabName) => {
+    switch (tabName) {
+      case "logoShirt":
+          state.isLogoTexture = !activeFilterTab[tabName];
+        break;
+      case "fullShirt":
+          state.isFullTexture = !activeFilterTab[tabName];
+        break;
+      default:
+        state.isLogoTexture = true;
+        state.isFullTexture = false;
+        break;
+    }
+
+    // after setting the state, activeFilterTab is updated
+
+    setActiveFilterTab((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName]
+      }
+    })
   }
   
   const readFile = (type) => {
@@ -121,8 +144,8 @@ const Customizer = () => {
                   key={tab.name}
                   tab={tab}
                   isFilterTab
-                  isActiveTab=''
-                  handleClick={()=>{}}
+                  isActiveTab={activeFilterTab[tab.name]}
+                  handleClick={() => handleActiveFilterTab(tab.name)}
                   />
                 ))}
 
