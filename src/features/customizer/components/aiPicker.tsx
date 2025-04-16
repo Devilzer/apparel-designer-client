@@ -1,9 +1,9 @@
 import React from 'react'
 
-const aiPicker = () => {
+const AiPicker = () => {
   return (
-    <div>aiPicker</div>
+    <div>AiPicker</div>
   )
 }
 
-export default aiPicker
+export default AiPicker
