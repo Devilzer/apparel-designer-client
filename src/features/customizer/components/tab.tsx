@@ -3,10 +3,13 @@ import {useSnapshot} from 'valtio';
 import state from '../../..//store';
 
 interface TabProps {
-tab:object;
+tab:{
+  name: string;
+  icon: string;
+};
 handleClick: () => void;
 isFilterTab?: boolean;
-isActiveTab?: string;
+isActiveTab?: boolean;
 }
 const tab : React.FC<TabProps> = ({
   tab,

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import {AccumulativeShadows, RandomizedLight} from '@react-three/drei';
 
 const BackDrop = () => {
-  const shadows = useRef();
+  const shadows = useRef<React.ComponentRef<typeof AccumulativeShadows>>(null);
 
   return (
   <AccumulativeShadows

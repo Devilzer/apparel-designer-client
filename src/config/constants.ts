@@ -1,6 +1,24 @@
 import { swatch, fileIcon, ai, logoShirt, fullShirt } from '../assets';
+import {StateType} from '../store'
 
-export const EditorTabs = [
+type EditorTab = {
+  name: string;
+  icon: string;
+};
+
+type FilterTab = {
+  name: string;
+  icon: string;
+};
+
+type DecalType = {
+  [key: string]: {
+    stateProperty: keyof StateType;
+    filterTab: string;
+  };
+};
+
+export const EditorTabs: EditorTab[] = [
   {
     name: "colorpicker",
     icon: swatch,
@@ -15,7 +33,7 @@ export const EditorTabs = [
   },
 ];
 
-export const FilterTabs = [
+export const FilterTabs: FilterTab[] = [
   {
     name: "logoShirt",
     icon: logoShirt,
@@ -26,7 +44,7 @@ export const FilterTabs = [
   },
 ];
 
-export const DecalTypes = {
+export const DecalTypes: DecalType = {
   logo: {
     stateProperty: "logoDecal",
     filterTab: "logoShirt",

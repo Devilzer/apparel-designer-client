@@ -1,6 +1,20 @@
 import {proxy} from 'valtio';
 
-const state = proxy({
+export type StateType = {
+  home: boolean;
+  color: string;
+  isLogoTexture: boolean;
+  isFullTexture: boolean;
+  logoDecal: string;
+  fullDecal: string;
+  activeEditorTab: string;
+  count: number;
+  isCustomizing: boolean;
+  fileName: string;
+  readOnly: boolean;
+};
+
+const state = proxy<StateType>({
     home: true,
     color: '#195699',
     isLogoTexture: true,

@@ -1,6 +1,12 @@
 import {CustomButton} from '../../../commonComponents'
 
-const FilePicker = ({ file, setFile, readFile }) => {
+interface FilePickerProps {
+  file: File | string;
+  setFile: (file: File | string) => void;
+  readFile: (type: string) => void;
+}
+
+const FilePicker: React.FC<FilePickerProps> = ({ file, setFile, readFile }) => {
   return (
     <div className="filepicker-container glassmorphism">
       <div className="flex-1 flex flex-col">
@@ -8,14 +14,18 @@ const FilePicker = ({ file, setFile, readFile }) => {
           id="file-upload"
           type="file"
           accept="image/*"
-          onChange={(e) => setFile(e.target.files[0])}
+          onChange={(e) => {
+            if (e.target.files && e.target.files[0]) {
+              setFile(e.target.files[0]);
+            }
+          }}
         />
         <label htmlFor="file-upload" className="filepicker-label">
           Upload File
         </label>
 
         <p className="mt-2 text-gray-500 text-xs truncate">
-          {file === '' ? "No file selected" : file.name}
+          {file === '' ? "No file selected" : typeof file === 'string' ? file : file.name}
         </p>
       </div>
 
