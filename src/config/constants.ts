@@ -14,7 +14,7 @@ type FilterTab = {
 type DecalType = {
   [key: string]: {
     stateProperty: keyof StateType;
-    filterTab: string;
+    filterTab: 'logoShirt' | 'fullShirt';
   };
 };
 
