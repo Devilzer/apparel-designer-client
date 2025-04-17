@@ -12,7 +12,6 @@ import {download} from '../../../assets'
 
 import state from '../../../store';
 
-import config from '../../../config/config'
 import {downloadCanvasToImage, reader} from '../../../config/helpers';
 import {EditorTabs,FilterTabs,DecalTypes} from '../../../config/constants';
 import {fadeAnimation,slideAnimation} from '../../../config/motion';
@@ -20,6 +19,8 @@ import {fadeAnimation,slideAnimation} from '../../../config/motion';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [file, setFile] = useState<File|string>('');
   const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
@@ -71,7 +72,31 @@ const Customizer = () => {
       })
   }
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (type:string) => {
+    if(!prompt) return alert("Please enter a prompt");
+
+    try {
+      setGeneratingImg(true);
+
+      const response = await fetch(`${apiUrl}?prompt=${prompt}`, {
+        method: 'GET',
+        headers: {
+          "content-type": "image/jpg",
+        }
+      })
+
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+
+      handleDecals(type, imageUrl)
+    } catch (error) {
+      alert(error)
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab("");
+    }
+  }
+
 
   // show tab content depending on the activeTab
   const generateTabContent = () => {
@@ -135,7 +160,7 @@ const Customizer = () => {
             type='filled'
             title='Go Back'
             handleClick={()=>{state.home=true}}
-            coustomStyles='w-fit px-4 py-2.5 font-bold text-sm'
+            customStyles='w-fit px-4 py-2.5 font-bold text-sm'
             />
           </motion.div>
           <motion.div

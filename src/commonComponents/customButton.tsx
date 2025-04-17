@@ -8,7 +8,7 @@ interface CustomButtonProps {
     type:'filled' | 'outline';
     title:string;
     handleClick: () => void;
-    coustomStyles?: string;
+    customStyles?: string;
 }
 
 const customButton : React.FC<CustomButtonProps> = (
@@ -16,7 +16,7 @@ const customButton : React.FC<CustomButtonProps> = (
     type,
     title,
     handleClick,
-    coustomStyles =''
+    customStyles =''
 }) => {
      const snap = useSnapshot(state)
 
@@ -35,7 +35,7 @@ const customButton : React.FC<CustomButtonProps> = (
         }
     }
   return (
-    <button className={`px-2 py-1.5 flex-1 rounded-md ${coustomStyles}`}
+    <button className={`px-2 py-1.5 flex-1 rounded-md ${customStyles}`}
     style={generateStyle(type)}
     onClick={handleClick}>
         {title}
