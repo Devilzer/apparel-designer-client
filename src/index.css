@@ -17,7 +17,7 @@
 }
 
 .head-text {
-  @apply xl:text-[7rem] text-[4rem] xl:leading-[8rem] leading-[3rem] font-black text-black;
+  @apply xl:text-[7rem] text-[3rem] xl:leading-[8rem] leading-[2rem] font-black text-black;
 }
 
 .download-btn {

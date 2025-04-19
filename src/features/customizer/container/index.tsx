@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import {useCallback, useState} from 'react'
 import {AnimatePresence,motion} from 'framer-motion'
 import {useSnapshot} from 'valtio'
 
@@ -7,8 +7,6 @@ import AiPicker from '../components/aiPicker';
 import ColorPicker from '../components/colorPicker';
 import FilePicker from '../components/filePicker';
 import Tab from '../components/tab';
-
-import {download} from '../../../assets'
 
 import state from '../../../store';
 
@@ -121,10 +119,22 @@ const Customizer = () => {
     }
   }
 
+  const tabClickHandler = useCallback((tabName:string) => {
+    if(tabName === 'download') {
+      downloadCanvasToImage();
+      return;
+    }
+    if(activeEditorTab === tabName) {
+      setActiveEditorTab("");
+      return;
+    }
+    setActiveEditorTab(tabName)
+  },[]);
+
+  if (snap.home) return null;
+
   return (
     <AnimatePresence>
-      {!snap.home && (
-        <>
           <motion.div 
           key="custom"
           className='absolute top-0 left-0 z-50'
@@ -139,11 +149,7 @@ const Customizer = () => {
                   key={tab.name}
                   tab={tab}
                   handleClick={() => {
-                    if(activeEditorTab === tab.name) {
-                      setActiveEditorTab("");
-                      return;
-                    }
-                    setActiveEditorTab(tab.name)
+                    tabClickHandler(tab.name)
                   }}
                   />
                 ))}
@@ -154,6 +160,7 @@ const Customizer = () => {
             </div>
           </motion.div>
           <motion.div
+          key={"close"}
           className='absolute z-50 top-5 right-5'
           {...fadeAnimation}>
             <CustomButton
@@ -164,6 +171,7 @@ const Customizer = () => {
             />
           </motion.div>
           <motion.div
+          key="filter"
           className='filtertabs-container'
           {...slideAnimation('up')}>
             {FilterTabs.map(tab=>(
@@ -177,10 +185,6 @@ const Customizer = () => {
                 ))}
 
           </motion.div>
-        </>
-      )
-      }
-
     </AnimatePresence>
   )
 }

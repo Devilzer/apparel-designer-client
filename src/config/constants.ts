@@ -1,4 +1,4 @@
-import { swatch, fileIcon, ai, logoShirt, fullShirt } from '../assets';
+import { swatch, fileIcon, ai, logoShirt, fullShirt, download } from '../assets';
 import {StateType} from '../store'
 
 type EditorTab = {
@@ -31,6 +31,10 @@ export const EditorTabs: EditorTab[] = [
     name: "aipicker",
     icon: ai,
   },
+  {
+    name: "download",
+    icon: download,
+  }
 ];
 
 export const FilterTabs: FilterTab[] = [
