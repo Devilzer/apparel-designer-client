@@ -129,7 +129,7 @@ const Customizer = () => {
       return;
     }
     setActiveEditorTab(tabName)
-  },[]);
+  },[activeEditorTab]);
 
   if (snap.home) return null;
 
